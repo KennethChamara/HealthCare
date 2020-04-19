@@ -150,7 +150,11 @@ public class AppointmentBean {
 		setPaymentType(AppointmentObject.get("PaymentType").getAsString());
 		
 	}
-	
+	public void convertStringToJSONSelect(String appointmentData) {
+		//convert string to JSON object and assign to variables in the class
+		AppointmentObject  = new JsonParser().parse(appointmentData).getAsJsonObject(); 		
+		setAppointmentID(AppointmentObject.get("AppointmentID").getAsInt());
+	}
 	public void convertStringToJSONDelete(String appointmentData) {
 		//convert string to JSON object and assign to variables in the class
 		AppointmentObject  = new JsonParser().parse(appointmentData).getAsJsonObject(); 		

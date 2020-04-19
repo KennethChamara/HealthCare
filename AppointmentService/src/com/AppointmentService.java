@@ -29,6 +29,22 @@ public class AppointmentService {
 	}
 	
 	@RolesAllowed({ "admin","patient" })
+	@GET
+	@Path("/specificSelect")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.TEXT_HTML)
+	public String SearchAppointment(String appointmentData)
+	{	
+		//create object of AppointmentBean class to save the values for the variables			
+		appbean =  new AppointmentBean();
+		//convert string to JSON object and assign to variables in the class
+		appbean.convertStringToJSONSelect(appointmentData);
+		String output = appointmentObj.searchAppointment(appbean);
+		return output;
+	}
+	
+	
+	@RolesAllowed({ "admin","patient" })
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
